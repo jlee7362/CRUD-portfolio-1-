@@ -35,5 +35,16 @@
   	WHERE id = #{id}
   </delete>
   
+  <update id="updateArticle">
+  	UPDATE article
+  	SET title = #{title},
+  		body = #{body},
+  		updateDate =#{updateDate}
+  		<if test="thumbImg != null and thumbImg !=''">, 
+  		thumbImg = #{thumbImg}
+  		</if>
+  	WHERE id = #{id} AND delStatus = 0
+  </update>
+  
   
 </mapper>

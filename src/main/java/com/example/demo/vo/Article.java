@@ -9,4 +9,9 @@ public class Article {
   private String title;
   private int memberId;
   private String thumbImg;
+  public int getDelStatus() {
+	// TODO Auto-generated method stub
+	return 0;
+  }
+
 }

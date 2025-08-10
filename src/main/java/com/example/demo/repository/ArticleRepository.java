@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -20,6 +21,9 @@ public interface ArticleRepository {
   void deleteArticle(@Param("id")int id);
 
   List<Article> findAll();
+
+  int updateArticle(@Param("id")int id, @Param("title") String title, @Param("body")String body, @Param("thumbImg") String thumbImg, @Param("updateDate")LocalDateTime updateDate);
+
 
   
   

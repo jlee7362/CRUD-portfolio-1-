@@ -21,7 +21,7 @@
 				<!-- 썸네일 -->
 				<td>
 					<c:if test="${not empty article.thumbImg}">
-						<img src="/upload/${article.thumbImg}" width="80" height="60" style="object-fit:cover;">
+						<img src="/upload/${article.thumbImg}" width="80" style="object-fit:cover;">
 					</c:if>
 				</td>
 				<td>${article.id}</td>

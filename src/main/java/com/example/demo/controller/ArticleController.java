@@ -2,18 +2,27 @@ package com.example.demo.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.repository.ArticleRepository;
+import com.example.demo.service.ArticleService;
 import com.example.demo.vo.Article;
+import com.example.demo.vo.ResultData;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,10 +31,11 @@ import lombok.RequiredArgsConstructor;
 public class ArticleController {
 
 	private final ArticleRepository articleRepository;
+	private ArticleService articleService;
 
 	@RequestMapping("/usr/article/list")
 	public String showList(Model model) {
-		List<Article> articles = articleRepository.getArticles();
+		List<Article> articles = articleService.getArticles();
 		model.addAttribute("articles", articles);
 		return "article/list";
 	}
@@ -106,22 +116,32 @@ public class ArticleController {
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(Model model, @RequestParam int id) {
-		Article article = articleRepository.getArticleById(id);
+		Article article = articleService.getArticleById(id);
 		model.addAttribute("article", article);
 		return "article/detail";
 	}
 
-	@RequestMapping(value = "/usr/article/modify", method = RequestMethod.GET)
+	@GetMapping("/usr/article/modify")
 	public String showModifyForm(Model model, @RequestParam int id) {
-		Article article = articleRepository.getArticleById(id);
-		model.addAttribute("article", article);
+		Article article = articleService.getArticleById(id);
+		if(article == null || article.getDelStatus() == 1) {
+			model.addAttribute("msg", "존재하지 않거나 삭제된 글입니다.");
+			model.addAttribute("historyBack", true);
+			return "common/redirect";
+		}
+		model.addAttribute("article",article);
 		return "article/modify";
 	}
 
-	@RequestMapping(value = "/usr/article/modify", method = RequestMethod.POST)
-	public String doModify(@RequestParam int id, @RequestParam String title) {
-		articleRepository.modifyArticle(id, title);
-		return "redirect:/usr/article/detail?id=" + id;
+	@PostMapping("/usr/article/modify")
+	@ResponseBody
+	public ResultData<Integer> doModify(@RequestParam int id, @RequestParam String title, @RequestParam String body, @RequestParam(required=false) MultipartFile file) {
+		
+		int affected = articleService.modifyArticle(id, title, body, file);
+		
+		return (affected > 0)
+				? ResultData.from("S-1", "수정 완료", "id", id)
+				: ResultData.from("F-1", "수정 실패");
 	}
 
 	@RequestMapping("/usr/article/delete")
