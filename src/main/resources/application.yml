@@ -4,12 +4,26 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/springfolio?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
     username: root
     password: ""   # 비번 있으면 입력
-
+  devtools:
+    restart:
+      additional-paths: src/main/webapp
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
 mybatis:
   type-aliases-package: com.example.demo.vo
   mapper-locations: classpath:mappers/**/*.xml
+server:
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+logging:
+  level:
+    org.springframework.web.servlet.handler: DEBUG

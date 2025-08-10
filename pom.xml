@@ -36,6 +36,12 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
   </dependency>
+  <!-- Spring Dev Tools -->
+  <dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-devtools</artifactId>
+  <scope>runtime</scope>
+</dependency>
 
   <!-- JSP: Tomcat Jasper -->
   <dependency>
@@ -73,6 +79,7 @@
     <artifactId>mysql-connector-j</artifactId>
     <scope>runtime</scope>
   </dependency>
+
   
 </dependencies>
 

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,10 @@
 </head>
 <body>
 	<h1>글 상세보기</h1>
+	
+	<c:if test="${not empty article.thumbImg }">
+		<img src="/upload/${article.thumbImg }" width="100" />
+	</c:if>
 
 	<p>ID: ${article.id }</p>
 	<p>등록일: ${article.regDate }</p>

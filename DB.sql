@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS springfolio CHARACTER SET utf8mb4;
+DROP DATABASE IF EXISTS springfolio;
+CREATE DATABASE springfolio;
 USE springfolio;
 
 CREATE TABLE article (
@@ -8,13 +9,14 @@ CREATE TABLE article (
   memberId INT NOT NULL
 );
 
+ALTER TABLE article
+ADD thumbImg VARCHAR(255) DEFAULT NULL;
+
 INSERT INTO article (title, memberId) VALUES
 ('제목1', 1), ('제목2', 2), ('제목3', 3);
 
 SELECT * FROM article;
 
-INSERT INTO article (title, memberId) VALUES
-('제목4', 4), ('제목5', 5), ('제목6', 6);
 
 SELECT id, regDate, title, memberId
     FROM article

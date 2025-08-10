@@ -13,9 +13,14 @@ public interface ArticleRepository {
 
   Article getArticleById(@Param("id") int id);
   
-  void writeArticle(@Param("title") String title, @Param("memberId") int memberId);
+  void writeArticle(@Param("title") String title,@Param("memberId") int memberId, @Param("thumbImg") String thumbImg);
 
   void modifyArticle(@Param("id")int id, @Param("title")String title);
 
   void deleteArticle(@Param("id")int id);
+
+  List<Article> findAll();
+
+  
+  
 }

@@ -8,4 +8,5 @@ public class Article {
   private String regDate;
   private String title;
   private int memberId;
+  private String thumbImg;
 }

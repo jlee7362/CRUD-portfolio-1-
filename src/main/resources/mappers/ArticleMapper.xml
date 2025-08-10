@@ -5,13 +5,13 @@
 
 <mapper namespace="com.example.demo.repository.ArticleRepository">
   <select id="getArticles" resultType="com.example.demo.vo.Article">
-    SELECT id, regDate, title, memberId
+    SELECT id, regDate, title, memberId, thumbImg
     FROM article
     ORDER BY id DESC
   </select>
   
   <select id="getArticleById" resultType="com.example.demo.vo.Article">
-  	SELECT id, regDate, title, memberId
+  	SELECT id, regDate, title, memberId, thumbImg
     FROM article
     WHERE id = ${id}
   </select>
@@ -20,7 +20,8 @@
   	INSERT INTO article
   	SET regDate = NOW(),
   		title = #{title},
-  		memberId = #{memberId}
+  		memberId = #{memberId},
+  		thumbImg = #{thumbImg}
   </insert>
   
   <update id="modifyArticle">
@@ -33,4 +34,6 @@
   	DELETE FROM article
   	WHERE id = #{id}
   </delete>
+  
+  
 </mapper>
