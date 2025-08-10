@@ -7,36 +7,35 @@
 </head>
 <body>
 	<h1>Article List</h1>
-
+<p><a href="/usr/article/write">새 글 작성</a></p>
 	<table border="1" cellpadding="6">
 		<tr>
-			<th>ThumbN</th>
+			<th>Thumb</th>
 			<th>ID</th>
-			<th>Registration Date</th>
+			<th>RegDate</th>
 			<th>Title</th>
-			<th>Member ID</th>
+			<th>Member</th>
+			<th>Action</th>
 		</tr>
-		<c:forEach var="article" items="${articles}">
+		<c:forEach var="a" items="${articles}">
 			<tr>
 				<!-- 썸네일 -->
 				<td>
-					<c:if test="${not empty article.thumbImg}">
-						<img src="/upload/${article.thumbImg}" width="80" style="object-fit:cover;">
+					<c:if test="${not empty a.thumbImg}">
+						<img src="/upload/${a.thumbImg}" style="height:40px"/>
 					</c:if>
 				</td>
-				<td>${article.id}</td>
-
-				<td>${article.regDate}</td>
+				<td>${a.id}</td>
+				<td>${a.regDate}</td>
+				<td><a href="/usr/article/detail?id=${a.id }">${a.title}</a></td>
+				<td>${a.memberId}</td>
 				<td>
-					<a href="detail?id=${article.id }">${article.title}</a>
+					<a href="/usr/article/modify?id=${a.id }">수정</a>|
+					<a href="/usr/article/delete?id=${a.id }" onclick="return confirm('삭제할까요?');">삭제</a>
 				</td>
-				<td>${article.memberId}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<div>
-		<a href="write">글 작성</a>
-	</div>
 
 </body>
 </html>

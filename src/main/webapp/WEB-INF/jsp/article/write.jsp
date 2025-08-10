@@ -8,19 +8,20 @@
 	<h1>글 작성</h1>
 
 	<form action="/usr/article/write" method="POST" enctype="multipart/form-data">
-		<div>
-			제목: <input type="text" name="title" required>
-		</div>
-		<div>
-			작성자 ID: <input type="number" name="memberId" required>
-		</div>
-		<div>
-			썸네일: <input type="file" name="thumbImgFile" accept="image/*">
-		</div>
-		<div>
+		<p>
+			<label>제목</label><br/>
+			<input type="text" name="title" required/>
+		</p>
+		<p>
+			<label>작성자 ID</label><br/>
+			<input type="number" name="memberId" required>
+		</p>
+		<p>
+			<label>썸네일 이미지(선택)</label><br/>
+			<input type="file" name="file" accept=".png,.jpg,.jpeg,.webp"/>
+		</p>
 			<button type="submit">저장</button>
-		</div>
-
 	</form>
+	<p><a href="/usr/article/list">← 목록</a></p>
 </body>
 </html>

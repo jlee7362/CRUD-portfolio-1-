@@ -3,25 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>글 상세보기</title>
+<title>Article Detail</title>
 </head>
 <body>
-	<h1>글 상세보기</h1>
-	
+	<h1>Article #${article.id }번</h1>
+	<p>RegDate: ${article.regDate }</p>
+	<p>Title: ${article.title }</p>
+	<p>Member: ${article.memberId }</p>
 	<c:if test="${not empty article.thumbImg }">
-		<img src="/upload/${article.thumbImg }" width="100" />
+		<p><img src="/upload/${article.thumbImg }"style="max-width: 360px"/></p>
 	</c:if>
 
-	<p>ID: ${article.id }</p>
-	<p>등록일: ${article.regDate }</p>
-	<p>제목: ${article.title }</p>
-	<p>작성자 ID: ${article.memberId }</p>
-
-	<div>
-		<a href="/usr/article/modify?id=${article.id }">수정</a>
-		<a href="/usr/article/delete?id=${article.id }">삭제</a>
+	<p>
 		<a href="/usr/article/list">목록</a>
-
-	</div>
+		<a href="/usr/article/modify?id=${article.id }">수정</a>|
+		<a href="/usr/article/delete?id=${article.id }" onclick="return confirm('삭제할까요?');">삭제</a>
+	</p>
 </body>
 </html>
