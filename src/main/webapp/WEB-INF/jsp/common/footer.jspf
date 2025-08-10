@@ -1,0 +1,8 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<footer class="mt-16 border-t">
+  <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+    <p>© <span id="year"></span> Springfolio JSP. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

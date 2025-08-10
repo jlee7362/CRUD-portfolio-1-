@@ -83,10 +83,4 @@ public class ArticleService {
 		return newFileName;// ← 이 값을 DB의 thumbImg에 저장
 	}
 
-	
-
-	
-
-	
-	
 }

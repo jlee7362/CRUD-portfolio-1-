@@ -1,0 +1,16 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<header class="border-b bg-white/80 backdrop-blur sticky top-0 z-40 bg-gray-50">
+	<div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-around">
+		<!-- LOGO (왼쪽) -->
+		<a href="/usr/home/main" class="flex items-center gap-5 h-20 font-bold text-2xl">
+			<span class="inline-block w-2.5 h-2.5 rounded-full bg-gray-900"></span>
+			<span>Springfolio</span>
+		</a>
+<nav class="flex-grow"></nav>
+		<nav class="flex items-center gap-6 mr-8">
+			<a href="/usr/home/main" class="fa-solid fa-house text-4xl hover:bg-gray-200 transition-colors duration-100 p-8 rounded-2xl" data-nav="home"></a>
+			<a href="/usr/article/list" class="fa-solid fa-clipboard-list text-4xl hover:bg-gray-200 transition-colors duration-100 p-8 rounded-2xl" data-nav="article"></a>
+		</nav>
+	</div>
+</header>
